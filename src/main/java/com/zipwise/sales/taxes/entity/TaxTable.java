@@ -10,7 +10,7 @@ public class TaxTable {
 
         private String message;
 
-        private ConsumerType(String message){
+        ConsumerType(String message){
             this.message = message;
         }
 

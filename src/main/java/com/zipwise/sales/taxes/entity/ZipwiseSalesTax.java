@@ -2,7 +2,7 @@ package com.zipwise.sales.taxes.entity;
 
 import java.util.List;
 
-public class ZipwiseSalesTaxes {
+public class ZipwiseSalesTax {
 
     private String county;
     private String state;                           
