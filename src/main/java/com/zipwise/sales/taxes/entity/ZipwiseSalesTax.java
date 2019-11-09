@@ -4,19 +4,19 @@ import java.util.List;
 
 public class ZipwiseSalesTax {
 
-    private String county;
+    private String country;
     private String state;                           
     private int zipcode;
     private int risklevel;
     private boolean active;
     private List<TaxTable> taxTables;
 
-    public String getCounty() {
-        return county;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getState() {
