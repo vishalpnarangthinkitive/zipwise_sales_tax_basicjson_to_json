@@ -7,6 +7,15 @@ public class TaxDetails {
     private String territory;
     private boolean activeExciseTax;
     private String taxOrder;
+    private String taxRegionName;
+
+    public String getTaxRegionName() {
+        return taxRegionName;
+    }
+
+    public void setTaxRegionName(String taxRegionName) {
+        this.taxRegionName = taxRegionName;
+    }
 
     public double getTaxRate() {
         return taxRate;

@@ -49,12 +49,7 @@ public class CSV2JSON {
                 taxTable.setTaxOrder(TaxTable.TaxOrder.PostOrder);
                 taxTable.setName(type.getMessage());
 
-                if(inputObject.getState().equalsIgnoreCase("CA") && type != TaxTable.ConsumerType.AdultUse) {
-                    taxTable.setActive(false);
-                }
-                else {
-                    taxTable.setActive(true);
-                }
+                taxTable.setActive(true);
 
                 {
                     TaxDetails cityTax = new TaxDetails();
@@ -63,15 +58,24 @@ public class CSV2JSON {
                     cityTax.setCompound(false);
                     cityTax.setTerritory("City");
                     cityTax.setTaxOrder("Post");
+                    // cityTax.setTaxRegionName(inputObject.getTax_region_name());
                     try {
                         cityTax.setTaxRate(Double.parseDouble(inputObject.getCity_rate()));
                     } catch (NumberFormatException e) {
                         cityTax.setTaxRate(0);
                     }
-                    if (cityTax.getTaxRate() == 0)
+
+                    if(inputObject.getState().equalsIgnoreCase("CA") && type != TaxTable.ConsumerType.AdultUse) {
                         cityTax.setActive(false);
-                    else
-                        cityTax.setActive(true);
+                    }
+                    else {
+                        if (cityTax.getTaxRate() == 0)
+                            cityTax.setActive(false);
+                        else
+                            cityTax.setActive(true);
+                    }
+
+
 
                     taxTable.setCityTax(cityTax);
                 }
@@ -82,6 +86,7 @@ public class CSV2JSON {
                     stateTax.setCompound(false);
                     stateTax.setTerritory("State");
                     stateTax.setTaxOrder("Post");
+                    // stateTax.setTaxRegionName(inputObject.getTax_region_name());
                     try {
                         stateTax.setTaxRate(Double.parseDouble(inputObject.getState_rate()));
                     } catch (NumberFormatException e) {
@@ -101,6 +106,7 @@ public class CSV2JSON {
                     county.setCompound(false);
                     county.setTerritory("County");
                     county.setTaxOrder("Post");
+                    // county.setTaxRegionName(inputObject.getTax_region_name());
                     try {
                         county.setTaxRate(Double.parseDouble(inputObject.getCounty_rate()));
                     } catch (NumberFormatException e) {
@@ -120,6 +126,7 @@ public class CSV2JSON {
                     special.setCompound(false);
                     special.setTerritory("Special");
                     special.setTaxOrder("Post");
+                    special.setTaxRegionName(inputObject.getTax_region_name());
                     try {
                         special.setTaxRate(Double.parseDouble(inputObject.getSpecial_rate()));
                     } catch (NumberFormatException e) {
