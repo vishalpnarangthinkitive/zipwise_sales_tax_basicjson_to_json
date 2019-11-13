@@ -4,15 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InputObject {
     public String country;
-    public String state;
-    public String zipcode;
-    public String tax_region_name;
-    public String RiskLevel;
-    public String state_rate;
-    public String county_rate;
-    public String city_rate;
-    public String special_rate;
-    public String combined_rate;
+    public String State;
+    public String ZipCode;
+    public String County;
+    public String NormalizedCounty;
+    public String City;
+    public String NormalizedCity;
+    public String TaxRegionName;
+    public String NormalizedTaxRegionName;
+    public String CombinedRate;
+    public String StateRate;
+    public String CountyRate;
+    public String CityRate;
+    public String SpecialRate;
 
     public String getCountry() {
         return country;
@@ -23,90 +27,126 @@ public class InputObject {
     }
 
     public String getState() {
-        return state;
+        return State;
     }
 
     public void setState(String state) {
-        this.state = state;
+        State = state;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return ZipCode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setZipCode(String zipCode) {
+        ZipCode = zipCode;
     }
 
-    public String getTax_region_name() {
-        return tax_region_name;
+    public String getCounty() {
+        return County;
     }
 
-    public void setTax_region_name(String tax_region_name) {
-        this.tax_region_name = tax_region_name;
+    public void setCounty(String county) {
+        County = county;
     }
 
-    public String getRiskLevel() {
-        return RiskLevel;
+    public String getNormalizedCounty() {
+        return NormalizedCounty;
     }
 
-    public void setRiskLevel(String riskLevel) {
-        RiskLevel = riskLevel;
+    public void setNormalizedCounty(String normalizedCounty) {
+        NormalizedCounty = normalizedCounty;
     }
 
-    public String getState_rate() {
-        return state_rate;
+    public String getCity() {
+        return City;
     }
 
-    public void setState_rate(String state_rate) {
-        this.state_rate = state_rate;
+    public void setCity(String city) {
+        City = city;
     }
 
-    public String getCounty_rate() {
-        return county_rate;
+    public String getNormalizedCity() {
+        return NormalizedCity;
     }
 
-    public void setCounty_rate(String county_rate) {
-        this.county_rate = county_rate;
+    public void setNormalizedCity(String normalizedCity) {
+        NormalizedCity = normalizedCity;
     }
 
-    public String getCity_rate() {
-        return city_rate;
+    public String getTaxRegionName() {
+        return TaxRegionName;
     }
 
-    public void setCity_rate(String city_rate) {
-        this.city_rate = city_rate;
+    public void setTaxRegionName(String taxRegionName) {
+        TaxRegionName = taxRegionName;
     }
 
-    public String getSpecial_rate() {
-        return special_rate;
+    public String getNormalizedTaxRegionName() {
+        return NormalizedTaxRegionName;
     }
 
-    public void setSpecial_rate(String special_rate) {
-        this.special_rate = special_rate;
+    public void setNormalizedTaxRegionName(String normalizedTaxRegionName) {
+        NormalizedTaxRegionName = normalizedTaxRegionName;
     }
 
-    public String getCombined_rate() {
-        return combined_rate;
+    public String getCombinedRate() {
+        return CombinedRate;
     }
 
-    public void setCombined_rate(String combined_rate) {
-        this.combined_rate = combined_rate;
+    public void setCombinedRate(String combinedRate) {
+        CombinedRate = combinedRate;
+    }
+
+    public String getStateRate() {
+        return StateRate;
+    }
+
+    public void setStateRate(String stateRate) {
+        StateRate = stateRate;
+    }
+
+    public String getCountyRate() {
+        return CountyRate;
+    }
+
+    public void setCountyRate(String countyRate) {
+        CountyRate = countyRate;
+    }
+
+    public String getCityRate() {
+        return CityRate;
+    }
+
+    public void setCityRate(String cityRate) {
+        CityRate = cityRate;
+    }
+
+    public String getSpecialRate() {
+        return SpecialRate;
+    }
+
+    public void setSpecialRate(String specialRate) {
+        SpecialRate = specialRate;
     }
 
     @Override
     public String toString() {
         return "InputObject{" +
                 "country='" + country + '\'' +
-                ", state='" + state + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                ", tax_region_name='" + tax_region_name + '\'' +
-                ", RiskLevel='" + RiskLevel + '\'' +
-                ", state_rate='" + state_rate + '\'' +
-                ", county_rate='" + county_rate + '\'' +
-                ", city_rate='" + city_rate + '\'' +
-                ", special_rate='" + special_rate + '\'' +
-                ", combined_rate='" + combined_rate + '\'' +
+                ", State='" + State + '\'' +
+                ", ZipCode='" + ZipCode + '\'' +
+                ", County='" + County + '\'' +
+                ", NormalizedCounty='" + NormalizedCounty + '\'' +
+                ", City='" + City + '\'' +
+                ", NormalizedCity='" + NormalizedCity + '\'' +
+                ", TaxRegionName='" + TaxRegionName + '\'' +
+                ", NormalizedTaxRegionName='" + NormalizedTaxRegionName + '\'' +
+                ", CombinedRate='" + CombinedRate + '\'' +
+                ", StateRate='" + StateRate + '\'' +
+                ", CountyRate='" + CountyRate + '\'' +
+                ", CityRate='" + CityRate + '\'' +
+                ", SpecialRate='" + SpecialRate + '\'' +
                 '}';
     }
 }

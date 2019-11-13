@@ -18,7 +18,7 @@ public class CSV2JSON {
     public static void main(String[] args) throws Exception {
         // all csv files added just using CA files for now will also import other states taxes as well
         // also note files starting with TAXRATES_ZIP5 have to be updated with excel formulas and headers
-        File input = new File("input_zipcode_files_statewise/CAZip.csv");
+        File input = new File("input_zipcode_files_statewise/CA-SalesTax Rates.csv");
         File output = new File("output_zipcode_files_statewise/CAZip.json");
 
         CsvSchema csvSchema = CsvSchema.builder().setUseHeader(true).build();
@@ -31,15 +31,13 @@ public class CSV2JSON {
 
         for(Object object : readAll){
             InputObject inputObject =  mapper.convertValue(object, InputObject.class);
+            inputObject.setCountry("US");
             ZipwiseSalesTax taxRecord = new ZipwiseSalesTax();
             taxRecord.setCountry(inputObject.getCountry());
             taxRecord.setState(inputObject.getState());
             taxRecord.setActive(true);
-            try{
-                taxRecord.setRisklevel(Integer.parseInt(inputObject.getRiskLevel()));
-            }catch (NumberFormatException e){
-                taxRecord.setRisklevel(0);
-            }
+            taxRecord.setCity(inputObject.getCity());
+            taxRecord.setTaxRegionName(inputObject.getTaxRegionName());
 
             List<TaxTable> taxTables = new ArrayList<TaxTable>();
 
@@ -58,9 +56,8 @@ public class CSV2JSON {
                     cityTax.setCompound(false);
                     cityTax.setTerritory("City");
                     cityTax.setTaxOrder("Post");
-                    // cityTax.setTaxRegionName(inputObject.getTax_region_name());
                     try {
-                        cityTax.setTaxRate(Double.parseDouble(inputObject.getCity_rate()));
+                        cityTax.setTaxRate(Double.parseDouble(inputObject.getCityRate()));
                     } catch (NumberFormatException e) {
                         cityTax.setTaxRate(0);
                     }
@@ -86,9 +83,8 @@ public class CSV2JSON {
                     stateTax.setCompound(false);
                     stateTax.setTerritory("State");
                     stateTax.setTaxOrder("Post");
-                    // stateTax.setTaxRegionName(inputObject.getTax_region_name());
                     try {
-                        stateTax.setTaxRate(Double.parseDouble(inputObject.getState_rate()));
+                        stateTax.setTaxRate(Double.parseDouble(inputObject.getStateRate()));
                     } catch (NumberFormatException e) {
                         stateTax.setTaxRate(0);
                     }
@@ -106,9 +102,9 @@ public class CSV2JSON {
                     county.setCompound(false);
                     county.setTerritory("County");
                     county.setTaxOrder("Post");
-                    // county.setTaxRegionName(inputObject.getTax_region_name());
+                    county.setCountyName(inputObject.getCounty());
                     try {
-                        county.setTaxRate(Double.parseDouble(inputObject.getCounty_rate()));
+                        county.setTaxRate(Double.parseDouble(inputObject.getCountyRate()));
                     } catch (NumberFormatException e) {
                         county.setTaxRate(0);
                     }
@@ -126,9 +122,9 @@ public class CSV2JSON {
                     special.setCompound(false);
                     special.setTerritory("Special");
                     special.setTaxOrder("Post");
-                    special.setTaxRegionName(inputObject.getTax_region_name());
+                    special.setCountyName(inputObject.getCounty());
                     try {
-                        special.setTaxRate(Double.parseDouble(inputObject.getSpecial_rate()));
+                        special.setTaxRate(Double.parseDouble(inputObject.getSpecialRate()));
                     } catch (NumberFormatException e) {
                         special.setTaxRate(0);
                     }
@@ -146,7 +142,7 @@ public class CSV2JSON {
 
 
             try{
-                taxRecord.setZipcode(Integer.parseInt(inputObject.getZipcode()));
+                taxRecord.setZipcode(Integer.parseInt(inputObject.getZipCode()));
                 zipwiseSalesTaxes.add(taxRecord);
             }catch (NumberFormatException e){
                 e.printStackTrace();

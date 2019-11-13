@@ -7,7 +7,9 @@ public class ZipwiseSalesTax {
     private String country;
     private String state;                           
     private int zipcode;
-    private int risklevel;
+    private String county;
+    private String city;
+    private String taxRegionName;
     private boolean active;
     private List<TaxTable> taxTables;
 
@@ -35,12 +37,28 @@ public class ZipwiseSalesTax {
         this.zipcode = zipcode;
     }
 
-    public int getRisklevel() {
-        return risklevel;
+    public String getCounty() {
+        return county;
     }
 
-    public void setRisklevel(int risklevel) {
-        this.risklevel = risklevel;
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getTaxRegionName() {
+        return taxRegionName;
+    }
+
+    public void setTaxRegionName(String taxRegionName) {
+        this.taxRegionName = taxRegionName;
     }
 
     public boolean isActive() {
